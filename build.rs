@@ -8,7 +8,7 @@ fn main() {
         .build();
 
     println!("cargo:rustc-link-search=native={}", dst.display());
-    println!("cargo:rustc-link-lib=static=libmanifold");
+    // println!("cargo:rustc-link-lib=static=manifold");
 
     let bindings = bindgen::Builder::default()
         .header("wrapper.h")
