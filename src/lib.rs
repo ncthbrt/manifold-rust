@@ -12,7 +12,7 @@ mod manifold {
 
 #[wasm_bindgen]
 pub fn hello() {
-    let mut cube: MaybeUninit<ManifoldManifold> = MaybeUninit::uninit();
+    let mut cube: MaybeUninit<ManifoldManifold> = MaybeUninit::zeroed();
     let cube_ref = unsafe {
         manifold::manifold_cube(
             cube.as_mut_ptr() as *mut std::os::raw::c_void,
