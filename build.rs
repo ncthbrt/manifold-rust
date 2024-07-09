@@ -4,7 +4,10 @@ use cmake::Config;
 
 fn main() {
     let dst = Config::new("manifold")
+        .target("x86_64-unknown-linux-gnu")
         .define("MANIFOLD_TEST", "OFF")
+        .define("WASM", "ON")
+        .define("CMAKE_CXX_COMPILER_ID", "Clang")
         .build();
 
     println!("cargo:rustc-link-search=native={}", dst.display());
