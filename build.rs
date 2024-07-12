@@ -3,15 +3,14 @@ use std::{env, path::PathBuf};
 use cmake::Config;
 
 fn main() {
-    let dst = Config::new("manifold")
-        .target("x86_64-unknown-linux-gnu")
+    let dst = cmake::Config::new("manifold")
         .define("MANIFOLD_TEST", "OFF")
-        .define("WASM", "ON")
-        .define("CMAKE_CXX_COMPILER_ID", "Clang")
+        .define("BUILD_SHARED_LIBS", "OFF")
         .build();
 
-    println!("cargo:rustc-link-search=native={}", dst.display());
-    // println!("cargo:rustc-link-lib=static=manifold");
+    println!("cargo:rustc-link-search=native={}/lib", dst.display());
+
+    println!("cargo:rustc-link-lib=dylib=manifoldc");
 
     let bindings = bindgen::Builder::default()
         .header("wrapper.h")

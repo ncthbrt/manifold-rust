@@ -5,8 +5,9 @@ authors = ["Natalie Cuthbert"]
 edition = "2018"
 rust-version = "1.57"
 
-[lib]
-crate-type = ["cdylib"]
+# [lib]
+# crate-type = ["cdylib"]
+
 
 [dependencies]
 wasm-bindgen = "0.2.92"
