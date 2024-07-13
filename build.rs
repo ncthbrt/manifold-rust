@@ -6,10 +6,14 @@ fn main() {
     let dst = cmake::Config::new("manifold")
         .define("MANIFOLD_TEST", "OFF")
         .define("BUILD_SHARED_LIBS", "OFF")
+        .target("x86_64-unknown_linux-gnu")
+        .cflag("-target wasm32")
+        .cxxflag("-target wasm32")
+        .cxxflag("-stdlib=libc++")
+        .cflag("-stdlib=libc")
         .build();
 
     println!("cargo:rustc-link-search=native={}/lib", dst.display());
-
     println!("cargo:rustc-link-lib=dylib=manifoldc");
 
     let bindings = bindgen::Builder::default()
