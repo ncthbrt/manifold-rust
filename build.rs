@@ -6,6 +6,7 @@ fn main() {
     let dst = cmake::Config::new("manifold")
         .define("MANIFOLD_TEST", "OFF")
         .define("BUILD_SHARED_LIBS", "OFF")
+        .define("BUILD_STATIC_LIBS", "ON")
         .build();
 
     println!("cargo:rustc-link-search=native={}/lib", dst.display());
