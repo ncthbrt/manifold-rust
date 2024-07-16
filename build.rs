@@ -1,7 +1,5 @@
 use std::{env, path::PathBuf};
 
-use cmake::Config;
-
 fn main() {
     let dst = cmake::Config::new("manifold")
         .define("MANIFOLD_TEST", "OFF")
